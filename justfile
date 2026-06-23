@@ -16,16 +16,29 @@ _check_image:
     #!/usr/bin/env bash
     set -euo pipefail
 
+    # GNU (Linux) and BSD (macOS) coreutils differ; detect and route accordingly.
+    iso_to_epoch() {
+        if date --version >/dev/null 2>&1; then
+            date -d "$1" +%s
+        else
+            # strip fractional seconds/timezone, interpret the ISO8601 UTC stamp
+            date -j -u -f "%Y-%m-%dT%H:%M:%S" "${1:0:19}" +%s
+        fi
+    }
+    human_time() { if date --version >/dev/null 2>&1; then date -d "@$1" "$2"; else date -r "$1" "$2"; fi }
+    mtime() { if stat --version >/dev/null 2>&1; then stat -c %Y "$1"; else stat -f %m "$1"; fi }
+
     if [ -z "$(docker images -q {{image_name}})" ]; then
         just image
         exit 0
     fi
 
     last_updated="$(docker inspect {{image_name}} | jq -r '.[].Created')"
-    echo "Toolchain image last updated at: $(date -d "${last_updated}" $'+\033[33m%c\033[0m')"
+    last_updated_epoch="$(iso_to_epoch "$last_updated")"
+    echo "Toolchain image last updated at: $(human_time "$last_updated_epoch" $'+\033[33m%c\033[0m')"
 
     # check mod time on Dockerfile and rebuild if it is newer than the image
-    if [ $(stat -c %Y Dockerfile) -gt $(date -d "$last_updated" +%s) ]; then
+    if [ "$(mtime Dockerfile)" -gt "$last_updated_epoch" ]; then
         echo "Dockerfile is newer than the image, rebuilding..."
         just image
     fi
