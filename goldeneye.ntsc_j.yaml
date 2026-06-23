@@ -1,11 +1,11 @@
-name: GoldenEye 007 (PAL)
-sha1: 167c3c433dec1f1eb921736f7d53fac8cb45ee31
+name: GoldenEye 007 (NTSC-J)
+sha1: 2a5dade32f7fad6c73c659d2026994632c1b3174
 options:
   platform: n64
   basename: goldeneye
-  target_path: ../baserom.pal.z64
-  build_path: build/pal/
-  base_path: splat.pal/
+  target_path: ../baserom.ntsc_j.z64
+  build_path: build/ntsc_j/
+  base_path: splat.ntsc_j/
   compiler: IDO
   find_file_boundaries: true
   asm_path: asm/

@@ -1,3 +1,12 @@
+/**
+ * Missing symbols found while splitting with `splat`.
+ * PAL was split first, and thus has the biggest list. The lists for NTSC-U and NTSC-J
+ * are smaller since they contain the symbols from the versions above them, and only the
+ * remaining undefined symbols are listed.
+ */
+
+/* pal */
+
 D_8002115C = 0x8002115C;
 D_80052DA0 = 0x80052DA0;
 D_80053E48 = 0x80053E48;
@@ -171,3 +180,33 @@ func_8FF40000 = 0x8FF40000;
 func_8FF80000 = 0x8FF80000;
 func_8FFC0000 = 0x8FFC0000;
 func_8FFCFFFC = 0x8FFCFFFC;
+
+/* ntsc_u */
+
+D_800232BC = 0x800232BC;
+
+func_80F00000 = 0x80F00000;
+func_81C00000 = 0x81C00000;
+func_82400000 = 0x82400000;
+func_83C48000 = 0x83C48000;
+func_84B00000 = 0x84B00000;
+func_85400000 = 0x85400000;
+func_85500000 = 0x85500000;
+func_85600000 = 0x85600000;
+func_88300000 = 0x88300000;
+func_88A40000 = 0x88A40000;
+func_8AA10000 = 0x8AA10000;
+func_8BC40000 = 0x8BC40000;
+func_8C300000 = 0x8C300000;
+func_8C600000 = 0x8C600000;
+func_8CA00000 = 0x8CA00000;
+func_8CB00000 = 0x8CB00000;
+func_8D600000 = 0x8D600000;
+func_8EF00000 = 0x8EF00000;
+func_8F400000 = 0x8F400000;
+
+/* ntsc_j */
+
+D_800232FC = 0x800232FC;
+
+func_80003190 = 0x80003190;
