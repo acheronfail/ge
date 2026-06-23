@@ -7,6 +7,7 @@ I've never done a decompilation before, this is a project for me to see how it w
 Requirements:
 
 - Docker (or anything Docker compatible)
+- `jq`
 - [Just](https://github.com/casey/just)
 
 You need to have a ROM of the game, place whichever you have at:

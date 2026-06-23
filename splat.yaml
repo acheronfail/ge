@@ -1,11 +1,11 @@
-name: GoldenEye 007 (NTSC-U)
-sha1: abe01e4aeb033b6c0836819f549c791b26cfde83
+name: GoldenEye 007 (${VERSION})
+sha1: ${SHA1}
 options:
   platform: n64
   basename: goldeneye
-  target_path: ../baserom.ntsc_u.z64
-  build_path: build/ntsc_u/
-  base_path: splat.ntsc_u/
+  target_path: ../baserom.${VERSION}.z64
+  build_path: build/${VERSION}/
+  base_path: ../splat.${VERSION}/
   compiler: IDO
   find_file_boundaries: true
   asm_path: asm/

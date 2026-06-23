@@ -17,7 +17,7 @@ FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-    && apt-get install -y build-essential binutils-mips-linux-gnu python3 python3-pip git \
+    && apt-get install -y build-essential binutils-mips-linux-gnu gettext-base python3 python3-pip git sudo \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install -U splat64[mips]
