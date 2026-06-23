@@ -1,0 +1,34 @@
+name: GoldenEye 007 (PAL)
+sha1: 167c3c433dec1f1eb921736f7d53fac8cb45ee31 # Change this if using PAL/JAP
+options:
+  platform: n64
+  basename: goldeneye
+  target_path: ../baserom.pal.z64
+  build_path: build/
+  base_path: splat.pal/
+  compiler: IDO
+  find_file_boundaries: true
+  asm_path: asm/
+  src_path: src/
+
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: boot
+    type: bin
+    start: 0x40
+
+  - name: main
+    type: code
+    start: 0x1000
+    vram: 0x80000400
+    subsegments:
+      - [0x1000, asm, entry]
+      - [0x1040, asm, game_code]
+
+  - name: assets
+    type: bin
+    start: 0x3F0000
+  - [0xC00000]
